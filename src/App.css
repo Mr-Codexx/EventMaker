@@ -1,38 +1,107 @@
-.App {
-  text-align: center;
+/* General body styling */
+body {
+  background-color: #f5f5f5;
+  font-family: 'Poppins', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Container for the card */
+.birthday-container {
+  height: 100vh;
+  background-image: url('https://www.transparenttextures.com/patterns/linen.png');
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+/* Card styling */
+.birthday-card {
+  background-color: #fff;
+  max-width: 600px;
+  border-radius: 12px;
+  position: relative;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Banner styling */
+.banner-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.banner {
+  width: 100px;
+}
+
+/* Title styling */
+.birthday-title {
+  font-family: 'Dancing Script', cursive;
+  color: #7b4229;
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+/* Message styling */
+.birthday-message {
+  color: #7b4229;
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+/* Profile image container */
+.image-container {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.profile-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 5px solid #d5b895;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Name text styling */
+.name-text {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.8rem;
+  color: #7b4229;
+  margin-bottom: 20px;
+}
+
+/* Cupcake icon */
+.bottom-section {
+  margin-top: 20px;
+}
+
+.cupcake {
+  width: 60px;
+  margin-top: 10px;
+}
+
+/* Website link text */
+.website-text {
+  font-size: 0.9rem;
+  color: #a9a9a9;
+  margin-top: 15px;
+}
+
+@media (max-width: 768px) {
+  .birthday-title {
+    font-size: 2.5rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .profile-image {
+    width: 120px;
+    height: 120px;
+  }
+
+  .name-text {
+    font-size: 1.5rem;
   }
 }
+
