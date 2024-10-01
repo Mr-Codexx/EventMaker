@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet'; // Import Helmet
 import CountdownClock from './CountdownClock';
 import './Event.css';
-import Video from '../asset/bg.mp4'
+import Video from '../asset/bg.mp4';
 import BirthdayCanvas from '../Celebration/BirthdayScene';
 
 const EventDetail = () => {
@@ -50,8 +51,31 @@ const EventDetail = () => {
         );
     }
 
+    // Format the user's name
+    const formattedUserName = event.userName
+        ? event.userName.split(' ')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+            .join(' ')
+        : 'Guest';
+
+    // Static fallback image if event image is not available
+    const fallbackImage = "https://cdn-icons-png.flaticon.com/512/7657/7657766.png";
+
+    // Use the first event image if available, otherwise use the fallback image
+    const eventImage = event.eventImages && event.eventImages.length > 0
+        ? event.eventImages[0]
+        : fallbackImage;
+
     return (
         <div className="event-detail-container">
+            {/* Helmet to set dynamic title and meta tags */}
+            <Helmet>
+                <title>Happy Birthday {formattedUserName}</title>
+                <meta property="og:image" content={eventImage} />
+                <meta property="og:title" content={`Happy Birthday ${formattedUserName}`} />
+                <meta property="og:description" content={event.eventText || 'Join us in celebrating this special occasion!'} />
+            </Helmet>
+
             <div className="overlay">
                 <div className="container mt-5 text-center">
                     <div className="">
@@ -72,14 +96,11 @@ const EventDetail = () => {
 
                                     <div className='Details'>
                                         <h1>
-                                            HAPPY BIRTHDAY {event.userName && event.userName.split(' ')
-                                                .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-                                                .join(' ')}
+                                            HAPPY BIRTHDAY {formattedUserName}
                                         </h1>
 
                                         <h3 className="subtitle mb-2" dangerouslySetInnerHTML={{ __html: event.eventText }}></h3>
                                         <h3>{eventDate.toDateString()}</h3>
-                                        {/* <p className="sr-text">Shareable ID: <strong>{id}</strong></p> */}
                                     </div>
 
                                     {event.eventImages && event.eventImages.length > 0 && (

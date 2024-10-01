@@ -1,3 +1,4 @@
+/* General container setup */
 .event-detail-container {
     position: relative;
     width: 100%;
@@ -5,35 +6,38 @@
     overflow: hidden;
 }
 
+/* Responsive Background Video */
 .bg-video {
     position: fixed; /* Fixed to cover the entire viewport */
     top: 0; /* Align to the top */
     left: 0; /* Align to the left */
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
+    width: 100vw; /* Full width relative to viewport */
+    height: 100vh; /* Full height relative to viewport */
     object-fit: cover; /* Ensures the video covers the area without distortion */
     z-index: -1; /* Place video behind other content */
 }
 
-/* Optional: To remove any default margin or padding on body */
+/* Remove default margin and padding */
 body {
     margin: 0;
     padding: 0;
 }
 
+/* Responsive Image Gallery */
 .image-gallery img {
     position: absolute;
     border-radius: 50%;
-    left: 78%; /* Adjust this value based on your layout */
-    top: 25%; /* Adjust this value based on your layout */
-    height: 300px !important;
-    width: 300px;
+    left: 75%; /* Adjust based on layout */
+    top: 25%;
+    height: 20vw; /* Adjusts with screen size */
+    width: 20vw; /* Adjusts with screen size */
     background-color: transparent;
     z-index: 1; /* Ensure images appear above the video */
     opacity: 0; /* Initially hidden */
     animation: fadeIn 2s forwards; /* Animation applied */
 }
 
+/* Event Details Section */
 .Details {
     color: greenyellow;
     position: absolute;
@@ -44,11 +48,16 @@ body {
     opacity: 0; /* Initially hidden */
     animation: slideIn 1s forwards; /* Animation applied */
     animation-delay: 0.5s; /* Delay before starting */
-}
-.Details h1{
-    text-transform: capitalize;
+    text-align: center;
 }
 
+/* Capitalize event heading */
+.Details h1 {
+    text-transform: capitalize;
+    font-size: 5vw; /* Responsive font size */
+}
+
+/* Home button responsiveness */
 .home {
     position: absolute;
     z-index: 3; /* Higher z-index to ensure it appears above other content */
@@ -58,10 +67,10 @@ body {
     animation-delay: 1s; /* Delay before starting */
 }
 
-.home span, 
+.home span,
 .home i {
     color: greenyellow !important;
-    font-size: small;
+    font-size: 2vw; /* Responsive font size */
 }
 
 .subtitle {
@@ -70,6 +79,7 @@ body {
     opacity: 0; /* Initially hidden */
     animation: fadeIn 1.5s forwards; /* Animation applied */
     animation-delay: 1.5s; /* Delay before starting */
+    font-size: 3.5vw; /* Responsive font size */
 }
 
 /* Animation keyframes */
@@ -101,5 +111,83 @@ body {
     to {
         transform: translate(-50%, -50%) scale(1);
         opacity: 1;
+    }
+}
+
+/* Media Queries for Responsive Layout */
+
+/* Mobile Devices */
+@media only screen and (max-width: 600px) {
+    .Details {
+        left: 50%; /* Center for mobile screens */
+        top: 45%;
+    }
+
+    .Details h1 {
+        font-size: 8vw; /* Increase font size on smaller screens */
+    }
+
+    .subtitle {
+        font-size: 5vw; /* Increase font size for the subtitle */
+    }
+
+    .image-gallery img {
+        left: 60%; /* Reposition for mobile */
+        top: 20%; 
+        height: 25vw; /* Adjust size for mobile */
+        width: 25vw; /* Adjust size for mobile */
+    }
+}
+
+/* Tablets and Medium Screens */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+    .Details {
+        left: 40%; /* Adjust position for tablet-sized screens */
+        top: 50%;
+    }
+
+    .Details h1 {
+        font-size: 6vw; /* Moderate font size for tablets */
+    }
+
+    .subtitle {
+        font-size: 4vw; /* Adjust subtitle for tablets */
+    }
+
+    .image-gallery img {
+        left: 65%; /* Adjust position for tablets */
+        top: 15% !important;
+        height: 22vw; /* Adjust size for tablets */
+        width: 22vw; /* Adjust size for tablets */
+    }
+}
+
+/* Desktops and Larger Screens */
+@media only screen and (min-width: 1025px) {
+    .image-gallery img {
+        position: absolute;
+        border-radius: 50%;
+        left: 78.6%; /* Adjust this value based on your layout */
+        top: 27%; /* Adjust this value based on your layout */
+        height: 440px !important;
+        width: 440px;
+        background-color: transparent;
+        z-index: 1; /* Ensure images appear above the video */
+        opacity: 0; /* Initially hidden */
+        animation: fadeIn 2s forwards; /* Animation applied */
+        border: none !important;
+    }
+
+    .Details h1 {
+        font-size: 3vw; /* Standard font size for desktops */
+    }
+
+    .subtitle {
+        font-size: 2.5vw; /* Standard subtitle size for desktops */
+    }
+
+    .home span, 
+    .home i {
+        font-size: 1.5vw; /* Adjust font size for home icon on desktops */
     }
 }
